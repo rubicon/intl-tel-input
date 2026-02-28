@@ -60,7 +60,9 @@ Sets the disabled attribute of both the telephone input and the selected country
 Type: `Object`  
 Default: `{}`  
 
-The props to pass to the input element, e.g. `id`, `class`, `placeholder`, `required`, `onBlur`. *Note: we recommend using the separate `disabled` prop instead of `inputProps.disabled`.*
+The props to pass to the input element, e.g. `id`, `class`, `placeholder`, `required`, `onBlur`.
+
+Note: some keys are reserved for the component/plugin integration and will be ignored if provided via `inputProps`: `type`, `ref`, `@input`/`onInput`, `@countrychange`/`onCountrychange`, `value`, `disabled`. Use the component props (`value`, `disabled`) and component events (`changeNumber`, `changeCountry`, etc.) instead.
 
 ###### options
 Type: `Object`  

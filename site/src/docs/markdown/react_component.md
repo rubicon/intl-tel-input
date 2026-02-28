@@ -70,7 +70,9 @@ An object containing the [initialisation options](/docs/options) to pass to the 
 Type: `Object`  
 Default: `{}`  
 
-The props to pass to the input element, e.g. `className`, `placeholder`, `required`, `onBlur`, etc. _Note: We recommend using the separate `disabled` prop instead of `inputProps.disabled`._
+The props to pass to the input element, e.g. `id`, `className`, `placeholder`, `required`, `onBlur`, etc.
+
+Note: some keys are reserved for the component/plugin integration and will be ignored if provided via `inputProps`: `type`, `ref`, `onInput`, `defaultValue`, `value`, `disabled`. Use the component props (`initialValue`, `disabled`) and the callback props instead.
 
 ###### onChangeCountry
 Type: `Function`  

@@ -133,13 +133,20 @@ const IntlTelInput = forwardRef(function IntlTelInput(
     }
   }, [disabled]);
 
+  // ignore keys that would break functionality
+  const {
+    value: _value,
+    // disabled: _disabled,
+    ...sanitizedInputProps
+  } = inputProps as unknown as Record<string, unknown>;
+
   return (
     <input
+      {...(sanitizedInputProps as InputProps)}
       type="tel"
       ref={inputRef}
       onInput={update}
       defaultValue={initialValue}
-      {...inputProps}
     />
   );
 });

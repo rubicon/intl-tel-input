@@ -31,6 +31,23 @@ const emit = defineEmits([
   "update:modelValue",
 ]);
 
+const sanitizedInputProps = computed(() => {
+  // ignore keys that would break functionality
+  const {
+    type: _type,
+    ref: _ref,
+    value: _value,
+    // disabled: _disabled,
+    onInput: _onInput,
+    oninput: _oninput,
+    onCountrychange: _onCountrychange,
+    onCountryChange: _onCountryChange,
+    ...rest
+  } = (props.inputProps ?? {}) as Record<string, unknown>;
+
+  return rest;
+});
+
 const displayed = computed(() => props.value ?? props.modelValue ?? "");
 
 const input = ref<HTMLInputElement | null>(null);
@@ -147,11 +164,12 @@ defineExpose({ instance, input });
 </script>
 
 <template>
+  <!-- must come first, so cannot override the other required props -->
   <input
+    v-bind="sanitizedInputProps"
     ref="input"
     type="tel"
     @countrychange="updateCountry"
     @input="updateValue"
-    v-bind="inputProps"
   />
 </template>

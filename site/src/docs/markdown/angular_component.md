@@ -95,7 +95,7 @@ An object containing the [initialisation options](https://github.com/jackocnr/in
 Type: `Object`  
 Default: `{}`  
 
-The props to pass to the input element, e.g. `class`, `placeholder`, `required`, etc. _Note: We recommend using the separate `disabled` prop instead of `inputProps.disabled`._
+The attributes to pass to the input element, e.g. `class`, `placeholder`, `required`, etc. _Note: We recommend using the separate `disabled` prop instead of `inputProps.disabled`._
 
 ###### usePreciseValidation
 Type: `Boolean`  

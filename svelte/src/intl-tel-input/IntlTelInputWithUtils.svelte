@@ -124,11 +124,23 @@ import intlTelInput from "./intlTelInputWithUtils";
   export function getInput(): HTMLInputElement | undefined {
     return inputElement;
   }
+
+  const sanitizeInputProps = (props: Record<string, unknown>) => {
+    // ignore keys that would break functionality
+    const {
+      value: _value,
+      // disabled: _disabled,
+      ...rest
+    } = props as Record<string, unknown>;
+
+    return rest;
+  };
 </script>
 
+<!-- inputProps must come first, so cannot override the other required props -->
 <input
+  {...sanitizeInputProps(inputProps)}
   bind:this={inputElement}
   type="tel"
   oninput={updateValue}
-  {...inputProps}
 />
