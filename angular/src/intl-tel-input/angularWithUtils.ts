@@ -232,9 +232,15 @@ export class IntlTelInputComponent
   }
 
   private applyInputProps(): void {
-    const props = this.inputProps;
+    const props = this.inputProps as Record<string, unknown>;
+    // Ignore keys that would break functionality
+    const blockedKeys = new Set(["value", "type" /*, "disabled"*/]);
+
     Object.entries(props).forEach(([key, value]) => {
-      this.inputRef.nativeElement.setAttribute(key, value);
+      if (blockedKeys.has(key)) return;
+      if (value === null || value === undefined || value === false) return;
+      const attributeValue = value === true ? "" : String(value);
+      this.inputRef.nativeElement.setAttribute(key, attributeValue);
     });
   }
 
