@@ -9,7 +9,7 @@ const App = () => {
   const [noticeMode, setNoticeMode] = useState("off");
 
   const notice = useMemo(() => {
-    // Logic to determine the notice based on the validation result
+    // Determine the notice message based on the current state
   }, [noticeMode, isValid, number, errorCode]);
 
   const handleSubmit = (e) => {

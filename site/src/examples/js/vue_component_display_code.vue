@@ -8,7 +8,7 @@
   const noticeMode = ref("off");
 
   const notice = computed(() => {
-    // Logic to determine the notice message based on the current state
+    // Determine the notice message based on the current state
   });
 
   const handleSubmit = () => {

@@ -14,36 +14,35 @@ import "intl-tel-input/styles";
         [initOptions]="initOptions"
       />
       <button type="submit">Validate</button>
-      <div class="notice">
-        <!-- Logic to determine the notice based on the validation result -->
-      </div>
+      <div class="notice">{{ noticeText }}</div>
     </form>
   `,
   standalone: true,
   imports: [IntlTelInputComponent, ReactiveFormsModule],
 })
 export class AppComponent {
-  @ViewChild("telInput") telInput!: IntlTelInputComponent;
+  @ViewChild("telInput") telInput?: IntlTelInputComponent;
+  private hasValidated = false;
 
   initOptions = {
     initialCountry: "us",
     loadUtils: () => import("intl-tel-input/utils"),
   };
 
-  fg: FormGroup = new FormGroup({
+  fg = new FormGroup({
     phone: new FormControl<string>("", [Validators.required]),
   });
-
-  notice: string | null = null;
 
   get phone() {
     return this.fg.get("phone");
   }
 
-  handleSubmit(): void {
+  get noticeText() {
+    // Determine the notice message based on the current state
+  }
+
+  handleSubmit() {
     this.phone?.markAsTouched();
-    if (this.fg.valid) {
-      this.notice = `Valid number: ${this.telInput.getInstance()?.getNumber()}`;
-    }
+    this.hasValidated = true;
   }
 }
