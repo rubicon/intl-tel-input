@@ -6,15 +6,17 @@ const App = () => {
   const [number, setNumber] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [errorCode, setErrorCode] = useState(0);
-  const [noticeMode, setNoticeMode] = useState("off");
+  const [showValidation, setShowValidation] = useState(false);
 
-  const notice = useMemo(() => {
-    // Determine the notice message based on the current state
-  }, [noticeMode, isValid, number, errorCode]);
+  let invalidMsg = null;
+  if (showValidation && !isValid) {
+    // your logic to derive the invalid message
+    invalidMsg = deriveInvalidMsg(number, errorCode);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setNoticeMode("submit");
+    setShowValidation(true);
   };
 
   return (
@@ -29,11 +31,13 @@ const App = () => {
         }}
         inputProps={{
           name: "phone",
-          onBlur: () => setNoticeMode("blur"),
+          onBlur: () => setShowValidation(true),
         }}
       />
-      <button type="submit">Validate</button>
-      {notice && <div className="notice">{notice}</div>}
+      <button type="submit">Submit</button>
+      {invalidMsg && (
+        <div className="invalid">{invalidMsg}</div>
+      )}
     </form>
   );
 };
