@@ -4,6 +4,7 @@ import { bootstrapApplication } from "@angular/platform-browser";
 import { Component, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IntlTelInputComponent } from "../../../build/intl-tel-input/angular/IntlTelInput.js";
+import type { IntlTelInputComponent as IntlTelInputComponentType } from "../../../build/intl-tel-input/angular/types/intl-tel-input/angular";
 
 const errorMap = [
   "Invalid number",
@@ -33,15 +34,16 @@ const errorMap = [
     </form>
   `,
   standalone: true,
-  imports: [IntlTelInputComponent, ReactiveFormsModule]
+  imports: [IntlTelInputComponent, ReactiveFormsModule],
 })
 export class AppComponent {
-  @ViewChild("telInput") telInput?: IntlTelInputComponent;
+  @ViewChild("telInput") telInput?: IntlTelInputComponentType;
   private hasValidated = false;
 
   initOptions = {
     initialCountry: "us",
-    loadUtils: () => import('<%= cacheBust('/intl-tel-input/js/utils.js') %>'),
+    // @ts-expect-error Vite/ESM dynamic import is using an EJS-templated URL string.
+    loadUtils: () => import("<%= cacheBust('/intl-tel-input/js/utils.js') %>"),
     searchInputClass: "form-control",
   };
 

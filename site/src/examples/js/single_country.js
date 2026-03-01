@@ -8,14 +8,16 @@ const errorMap = ["Invalid number", "Invalid country code", "Too short", "Too lo
 
 // initialise plugin
 const iti = window.intlTelInput(input, {
-  initialCountry: "us",
+  onlyCountries: ["us"],
+  allowDropdown: false,
+  showFlags: false,
   loadUtils: () => import("<%= cacheBust('/intl-tel-input/js/utils.js') %>"),
-  searchInputClass: "form-control",
 });
 
 const reset = () => {
   input.classList.remove("error");
   errorMsg.innerHTML = "";
+  validMsg.innerHTML = "";
   errorMsg.classList.add("hide");
   validMsg.classList.add("hide");
 };
@@ -27,11 +29,12 @@ const showError = (msg) => {
 };
 
 // on click button: validate
-button.addEventListener('click', () => {
+button.addEventListener("click", () => {
   reset();
   if (!input.value.trim()) {
     showError("Required");
-  } else if (iti.isValidNumberPrecise()) {
+  } else if (iti.isValidNumber()) {
+    validMsg.innerHTML = "Valid number: " + iti.getNumber();
     validMsg.classList.remove("hide");
   } else {
     const errorCode = iti.getValidationError();
@@ -41,5 +44,5 @@ button.addEventListener('click', () => {
 });
 
 // on keyup / change flag: reset
-input.addEventListener('change', reset);
-input.addEventListener('keyup', reset);
+input.addEventListener("change", reset);
+input.addEventListener("keyup", reset);

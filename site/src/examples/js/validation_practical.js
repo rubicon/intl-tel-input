@@ -27,7 +27,7 @@ const showError = (msg) => {
 };
 
 // on click button: validate
-button.addEventListener('click', () => {
+button.addEventListener("click", () => {
   reset();
   if (!input.value.trim()) {
     showError("Required");
@@ -41,5 +41,5 @@ button.addEventListener('click', () => {
 });
 
 // on keyup / change flag: reset
-input.addEventListener('change', reset);
-input.addEventListener('keyup', reset);
+input.addEventListener("change", reset);
+input.addEventListener("keyup", reset);

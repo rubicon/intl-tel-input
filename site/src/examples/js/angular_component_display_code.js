@@ -21,8 +21,8 @@ import "intl-tel-input/styles";
   imports: [IntlTelInputComponent, ReactiveFormsModule],
 })
 export class AppComponent {
-  @ViewChild("telInput") telInput?: IntlTelInputComponent;
-  private hasValidated = false;
+  @ViewChild("telInput") telInput;
+  hasValidated = false;
 
   initOptions = {
     initialCountry: "us",

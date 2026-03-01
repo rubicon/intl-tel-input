@@ -159,7 +159,7 @@ module.exports = function (grunt) {
     pageExtra = {},
   }) => {
     const slug = key.replace(/_/g, "-");
-    const jsSrc = js.src || `src/examples/js/${key}.js.ejs`;
+    const jsSrc = js.src || `src/examples/js/${key}.js`;
     // some examples build to tmp first
     const jsDest = js.dest || `${js.destDir || "build"}/examples/js/${key}.js`;
     const displayCode = content.displayCode || jsDest;
@@ -396,7 +396,7 @@ module.exports = function (grunt) {
     title: "Display existing number",
     metaDesc: "Automatically format an existing number during initialisation.",
     js: {
-      src: "src/examples/js/simple_init_plugin.js.ejs",
+      src: "src/examples/js/simple_init_plugin.js",
     },
     content: {
       includeItiScript: true,
@@ -406,7 +406,7 @@ module.exports = function (grunt) {
     title: "Large flags",
     metaDesc: "How to display extra large flag images.",
     js: {
-      src: "src/examples/js/simple_init_plugin.js.ejs",
+      src: "src/examples/js/simple_init_plugin.js",
     },
     content: {
       markupName: "simple_input",
@@ -422,14 +422,14 @@ module.exports = function (grunt) {
     title: "Angular component",
     metaDesc: "How to use intl-tel-input with Angular.",
     js: {
-      src: "src/examples/js/angular_component.ts.ejs",
+      src: "src/examples/js/angular_component.ts",
       dest: "tmp/examples/js/angular_component.ts",
       script: "angular_component_bundle.js",
     },
     content: {
       markupName: "component",
       hideMarkupSection: true,
-      displayCode: "src/examples/js/angular_component_display_code.ts",
+      displayCode: "src/examples/js/angular_component_display_code.js",
       script: "angular_component_bundle.js",
     },
   }, {
@@ -452,7 +452,7 @@ module.exports = function (grunt) {
     metaDesc: "How to use intl-tel-input with Vue.",
     js: {
       // need to specify the source because of the alternative .vue extension
-      src: "src/examples/js/vue_component.vue.ejs",
+      src: "src/examples/js/vue_component.vue",
       dest: "tmp/examples/js/vue_component.vue",
       script: "vue_component_bundle.js",
     },
@@ -468,7 +468,7 @@ module.exports = function (grunt) {
     metaDesc: "How to use intl-tel-input with Svelte.",
     js: {
       // need to specify the source because of the alternative .svelte extension
-      src: "src/examples/js/svelte_component.svelte.ejs",
+      src: "src/examples/js/svelte_component.svelte",
       dest: "tmp/examples/js/svelte_component.svelte",
       script: "svelte_component_bundle.js",
     },

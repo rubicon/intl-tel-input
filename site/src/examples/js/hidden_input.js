@@ -17,7 +17,7 @@ form.onsubmit = () => {
 };
 
 const urlParams = new URLSearchParams(window.location.search);
-const fullPhone = urlParams.get('full_phone')
+const fullPhone = urlParams.get("full_phone");
 if (fullPhone) {
   message.innerHTML = `Submitted hidden input value: ${fullPhone}`;
 }

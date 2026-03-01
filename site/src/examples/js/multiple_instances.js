@@ -3,20 +3,20 @@ const inputMobile = document.querySelector("#mobile");
 const inputVacation = document.querySelector("#vacation");
 
 window.intlTelInput(inputHome, {
-  initialCountry: 'gb',
-  placeholderNumberType: 'FIXED_LINE',
+  initialCountry: "gb",
+  placeholderNumberType: "FIXED_LINE",
   loadUtils: () => import("<%= cacheBust('/intl-tel-input/js/utils.js') %>"),
   searchInputClass: "form-control",
 });
 window.intlTelInput(inputMobile, {
-  initialCountry: 'gb',
-  placeholderNumberType: 'MOBILE',
+  initialCountry: "gb",
+  placeholderNumberType: "MOBILE",
   loadUtils: () => import("<%= cacheBust('/intl-tel-input/js/utils.js') %>"),
   searchInputClass: "form-control",
 });
 window.intlTelInput(inputVacation, {
-  initialCountry: 'es',
-  onlyCountries: ['es', 'fr', 'it'],
+  initialCountry: "es",
+  onlyCountries: ["es", "fr", "it"],
   loadUtils: () => import("<%= cacheBust('/intl-tel-input/js/utils.js') %>"),
   searchInputClass: "form-control",
 });
